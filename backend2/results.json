@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-08-08T18:04:29.245383",
+  "location": "saltlake, Kolkata",
+  "latitude": 22.5848443,
+  "longitude": 88.4065528,
+  "target_audience": "student",
+  "time_of_day": "evening",
+  "data": {
+    "colleges": 2,
+    "universities": 3,
+    "offices": 0,
+    "malls": 2,
+    "restaurants": 81,
+    "cafes": 0,
+    "metro_distance": 0.28590703527397854,
+    "bus_distance": 0.2257898798475836,
+    "train_distance": 1.752221583024607
+  },
+  "scores": {
+    "demand": 15.0,
+    "competition": 75.7,
+    "accessibility": 85.5,
+    "audience_fit": 19.0,
+    "time_score": 90,
+    "weather": 80,
+    "final_score": 52.59
+  }
+}

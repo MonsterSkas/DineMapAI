@@ -1,0 +1,777 @@
+{
+    "location": {
+        "query": "Salt Lake, Kolkata",
+        "latitude": 22.590425,
+        "longitude": 88.41692,
+        "display_name": "Bidhannagar, Kolkata Metropolitan Area, Rajarhat, North 24 Parganas, West Bengal, India"
+    },
+    "restaurants": [],
+    "transportation": [
+        {
+            "id": 844568183,
+            "name": "Kwality",
+            "type": "bus",
+            "latitude": 22.5986739,
+            "longitude": 88.4140692,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2323761292,
+            "name": "Bidhannagar Road",
+            "type": "train",
+            "latitude": 22.5912601,
+            "longitude": 88.3909641,
+            "operator": "ER",
+            "network": "IR"
+        },
+        {
+            "id": 2453444462,
+            "name": "Keshtopur (Krishnapur)",
+            "type": "bus",
+            "latitude": 22.6038165,
+            "longitude": 88.4242768,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2455026031,
+            "name": "Rabindra Pally",
+            "type": "bus",
+            "latitude": 22.6017314,
+            "longitude": 88.4285398,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2455034005,
+            "name": "Shitala Mandir",
+            "type": "bus",
+            "latitude": 22.6015412,
+            "longitude": 88.4310928,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2455116015,
+            "name": "SreeBhumi",
+            "type": "bus",
+            "latitude": 22.5981082,
+            "longitude": 88.4036131,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2455116020,
+            "name": "Golaghata",
+            "type": "bus",
+            "latitude": 22.5961058,
+            "longitude": 88.4003045,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456244816,
+            "name": "PNB",
+            "type": "bus",
+            "latitude": 22.5916566,
+            "longitude": 88.4001329,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456244817,
+            "name": "PNB",
+            "type": "bus",
+            "latitude": 22.5912297,
+            "longitude": 88.3997476,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456244818,
+            "name": "PNB",
+            "type": "bus",
+            "latitude": 22.5912825,
+            "longitude": 88.3995024,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456244819,
+            "name": "AB AC Pahri",
+            "type": "bus",
+            "latitude": 22.5932572,
+            "longitude": 88.4024985,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456244820,
+            "name": "3 No",
+            "type": "bus",
+            "latitude": 22.5947143,
+            "longitude": 88.4053712,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456244821,
+            "name": "BD",
+            "type": "bus",
+            "latitude": 22.5958425,
+            "longitude": 88.4072132,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456244822,
+            "name": "AD",
+            "type": "bus",
+            "latitude": 22.5960796,
+            "longitude": 88.4072681,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456249739,
+            "name": "Tank No. 4",
+            "type": "bus",
+            "latitude": 22.5970338,
+            "longitude": 88.4088718,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456254448,
+            "name": "Sen Mahasay Kwality",
+            "type": "bus",
+            "latitude": 22.5985594,
+            "longitude": 88.4114814,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456254451,
+            "name": "BE Kwality",
+            "type": "bus",
+            "latitude": 22.5984842,
+            "longitude": 88.4117152,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456260329,
+            "name": "CAP Camp",
+            "type": "bus",
+            "latitude": 22.5985111,
+            "longitude": 88.4159488,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2456260330,
+            "name": "Tank 5 bus stop",
+            "type": "bus",
+            "latitude": 22.5979353,
+            "longitude": 88.4186932,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460737275,
+            "name": "Saltlake EE Block Bus Stop",
+            "type": "bus",
+            "latitude": 22.5822352,
+            "longitude": 88.4242073,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460737276,
+            "name": "Japani Gate Salt Lake Mini Bus Terminus",
+            "type": "bus",
+            "latitude": 22.5790355,
+            "longitude": 88.42612,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460737277,
+            "name": "Wipro",
+            "type": "bus",
+            "latitude": 22.5789982,
+            "longitude": 88.4266991,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460737278,
+            "name": "201 Nimta PO - Nicco Park Bus Terminus",
+            "type": "bus",
+            "latitude": 22.5789289,
+            "longitude": 88.4263316,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460767452,
+            "name": "Karunamoyee 4",
+            "type": "bus",
+            "latitude": 22.5853358,
+            "longitude": 88.4223485,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460767454,
+            "name": "Karunamoyee",
+            "type": "bus",
+            "latitude": 22.5859945,
+            "longitude": 88.4209109,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460767457,
+            "name": "Karunamoyee 2",
+            "type": "bus",
+            "latitude": 22.5853482,
+            "longitude": 88.4216619,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460767461,
+            "name": "Karunamoyee 1",
+            "type": "bus",
+            "latitude": 22.5852641,
+            "longitude": 88.4219595,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460767462,
+            "name": "Karunamoyee 3",
+            "type": "bus",
+            "latitude": 22.5857989,
+            "longitude": 88.4220213,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460767463,
+            "name": "Number 9 Island",
+            "type": "bus",
+            "latitude": 22.5865839,
+            "longitude": 88.4241188,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460827326,
+            "name": "City Centre",
+            "type": "bus",
+            "latitude": 22.5899519,
+            "longitude": 88.4084144,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460843429,
+            "name": "Labony",
+            "type": "bus",
+            "latitude": 22.5829732,
+            "longitude": 88.4056169,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460843437,
+            "name": "Labony 2",
+            "type": "bus",
+            "latitude": 22.5817857,
+            "longitude": 88.4064698,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460843440,
+            "name": "Vidyasagar",
+            "type": "bus",
+            "latitude": 22.5848727,
+            "longitude": 88.4042275,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460852907,
+            "name": "GD Island",
+            "type": "bus",
+            "latitude": 22.5765668,
+            "longitude": 88.4134121,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460884256,
+            "name": "FD Block",
+            "type": "bus",
+            "latitude": 22.5793849,
+            "longitude": 88.4143931,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460884257,
+            "name": "FD",
+            "type": "bus",
+            "latitude": 22.5847835,
+            "longitude": 88.4118879,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460971982,
+            "name": "Tank No. 7",
+            "type": "bus",
+            "latitude": 22.5962481,
+            "longitude": 88.4245587,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460971983,
+            "name": "Baishaki",
+            "type": "bus",
+            "latitude": 22.597084,
+            "longitude": 88.4215227,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2460972893,
+            "name": "Number 7 Island / Circle",
+            "type": "bus",
+            "latitude": 22.593404,
+            "longitude": 88.4265998,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2461167025,
+            "name": "8 Number Tank",
+            "type": "bus",
+            "latitude": 22.5866916,
+            "longitude": 88.4312842,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 2461167032,
+            "name": "Number 8 Island",
+            "type": "bus",
+            "latitude": 22.5895544,
+            "longitude": 88.4292203,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 5244225850,
+            "name": "Tala",
+            "type": "train",
+            "latitude": 22.6063508,
+            "longitude": 88.3784257,
+            "operator": "ER",
+            "network": "IR"
+        },
+        {
+            "id": 5253354261,
+            "name": "Sir Gurudas Banerjee Halt",
+            "type": "train",
+            "latitude": 22.5741753,
+            "longitude": 88.3850451,
+            "operator": "ER",
+            "network": "IR"
+        },
+        {
+            "id": 5421537963,
+            "name": "Dum Dum",
+            "type": "metro",
+            "latitude": 22.6211141,
+            "longitude": 88.3928973,
+            "operator": "Metro Railway, Kolkata",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 5421546974,
+            "name": "Shyambazar",
+            "type": "metro",
+            "latitude": 22.601335,
+            "longitude": 88.3724974,
+            "operator": "Metro Railway, Kolkata",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 5421548359,
+            "name": "Belgachia",
+            "type": "metro",
+            "latitude": 22.6059241,
+            "longitude": 88.3863913,
+            "operator": "Metro Railway, Kolkata",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 5574213459,
+            "name": "Bijan Bhavan",
+            "type": "bus",
+            "latitude": 22.5734938,
+            "longitude": 88.4128821,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 7468327498,
+            "name": "Tank No. 4",
+            "type": "bus",
+            "latitude": 22.5973446,
+            "longitude": 88.4097153,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 7630434398,
+            "name": "Kolkata",
+            "type": "train",
+            "latitude": 22.6012775,
+            "longitude": 88.3841474,
+            "operator": "ER",
+            "network": "IR"
+        },
+        {
+            "id": 7944684393,
+            "name": "Nalban Metro Station",
+            "type": "metro",
+            "latitude": 22.5733404,
+            "longitude": 88.4212209,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 7976140059,
+            "name": "Karunamoyee",
+            "type": "metro",
+            "latitude": 22.58638,
+            "longitude": 88.4215312,
+            "operator": "Kolkata Metro Rail Corporation Limited (KMRCL)",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 7976140060,
+            "name": "Central Park",
+            "type": "metro",
+            "latitude": 22.5904737,
+            "longitude": 88.4156247,
+            "operator": "Kolkata Metro Rail Corporation Limited (KMRCL)",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 7976140063,
+            "name": "City Centre",
+            "type": "metro",
+            "latitude": 22.5870993,
+            "longitude": 88.4078908,
+            "operator": "Kolkata Metro Rail Corporation Limited (KMRCL)",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 7976140066,
+            "name": "Bengal Chemical",
+            "type": "metro",
+            "latitude": 22.5800666,
+            "longitude": 88.4012962,
+            "operator": "Not available",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 7976140069,
+            "name": "Salt Lake Stadium",
+            "type": "metro",
+            "latitude": 22.5731115,
+            "longitude": 88.4030891,
+            "operator": "Not available",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 7976140072,
+            "name": "Phoolbagan",
+            "type": "metro",
+            "latitude": 22.5721268,
+            "longitude": 88.3902408,
+            "operator": "Not available",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 7976140073,
+            "name": "Salt Lake Sector V",
+            "type": "metro",
+            "latitude": 22.5809434,
+            "longitude": 88.4290872,
+            "operator": "Kolkata Metro Rail Corporation Limited (KMRCL)",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 8516997423,
+            "name": "Unnamed",
+            "type": "bus",
+            "latitude": 22.5850345,
+            "longitude": 88.4222016,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 8999697038,
+            "name": "Patipukur",
+            "type": "train",
+            "latitude": 22.6065505,
+            "longitude": 88.3952451,
+            "operator": "ER",
+            "network": "IR"
+        },
+        {
+            "id": 11971705709,
+            "name": "FE Block",
+            "type": "bus",
+            "latitude": 22.5834959,
+            "longitude": 88.4184648,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 11971705710,
+            "name": "FD Block Central Park",
+            "type": "bus",
+            "latitude": 22.5840029,
+            "longitude": 88.4158488,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 11971705711,
+            "name": "FD Block",
+            "type": "bus",
+            "latitude": 22.5792473,
+            "longitude": 88.4141251,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 11971705712,
+            "name": "Bijan Bhavan",
+            "type": "bus",
+            "latitude": 22.5740153,
+            "longitude": 88.4127089,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 11971705751,
+            "name": "FD Block Central Park",
+            "type": "bus",
+            "latitude": 22.5838334,
+            "longitude": 88.415821,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 11971707027,
+            "name": "GD Island",
+            "type": "bus",
+            "latitude": 22.5764188,
+            "longitude": 88.4136729,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 11971707028,
+            "name": "FE Block",
+            "type": "bus",
+            "latitude": 22.5833143,
+            "longitude": 88.4183488,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12076417080,
+            "name": "Wipro",
+            "type": "bus",
+            "latitude": 22.5789078,
+            "longitude": 88.4265338,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12076417086,
+            "name": "Sushrut",
+            "type": "bus",
+            "latitude": 22.5757555,
+            "longitude": 88.4179155,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12129026846,
+            "name": "Dumdum Park",
+            "type": "bus",
+            "latitude": 22.6027313,
+            "longitude": 88.4192519,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12129049529,
+            "name": "Lake town",
+            "type": "bus",
+            "latitude": 22.5994169,
+            "longitude": 88.4063992,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12206764162,
+            "name": "Matri Sadan Bus Stop",
+            "type": "bus",
+            "latitude": 22.5819947,
+            "longitude": 88.4243526,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12761638105,
+            "name": "13 No. Tank",
+            "type": "bus",
+            "latitude": 22.5744417,
+            "longitude": 88.4090865,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12761638106,
+            "name": "13 No. Tank",
+            "type": "bus",
+            "latitude": 22.5743975,
+            "longitude": 88.4091775,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12761638107,
+            "name": "ESI Head Office",
+            "type": "bus",
+            "latitude": 22.5753189,
+            "longitude": 88.407202,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12761638108,
+            "name": "ESI Head Office",
+            "type": "bus",
+            "latitude": 22.5753828,
+            "longitude": 88.407277,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12761638109,
+            "name": "Vidya Bhavan",
+            "type": "bus",
+            "latitude": 22.5767933,
+            "longitude": 88.4058605,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12761638110,
+            "name": "Vidya Bhavan",
+            "type": "bus",
+            "latitude": 22.5771095,
+            "longitude": 88.4060885,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 12761638111,
+            "name": "Vidya Bhavan",
+            "type": "bus",
+            "latitude": 22.5771984,
+            "longitude": 88.4060405,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 13088458999,
+            "name": "Beleghata",
+            "type": "metro",
+            "latitude": 22.5507084,
+            "longitude": 88.4039852,
+            "operator": "Metro Railway, Kolkata",
+            "network": "Kolkata Metro"
+        },
+        {
+            "id": 13528802162,
+            "name": "Vidyasagar Abason BusSTOP",
+            "type": "bus",
+            "latitude": 22.5844355,
+            "longitude": 88.4043986,
+            "operator": "Not available",
+            "network": "Not available"
+        },
+        {
+            "id": 64689452,
+            "name": "Netaji Subhash Chandra Bose International Airport",
+            "type": "airport",
+            "latitude": 22.6563647,
+            "longitude": 88.4448077,
+            "operator": "Airport Authority of India",
+            "network": "Not available"
+        },
+        {
+            "id": 429051750,
+            "name": "Behala Airport",
+            "type": "airport",
+            "latitude": 22.5058429,
+            "longitude": 88.2934109,
+            "operator": "Not available",
+            "network": "Not available"
+        }
+    ],
+    "business_area": {
+        "colleges": [],
+        "universities": [
+            {
+                "id": 249363447,
+                "name": "Maulana Abul Kalam Azad University of Technology",
+                "latitude": 22.5964916,
+                "longitude": 88.4174395
+            }
+        ],
+        "malls": [
+            {
+                "id": 2148922355,
+                "name": "City Centre 1, Salt Lake",
+                "latitude": 22.5882088,
+                "longitude": 88.4084341
+            }
+        ],
+        "supermarkets": [
+            {
+                "id": 2337720889,
+                "name": "C3",
+                "latitude": 22.5877964,
+                "longitude": 88.4087305
+            }
+        ],
+        "offices": []
+    }
+}
