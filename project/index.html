@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DineMapAI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- This page is the entry point of the site. It simply sends
+       the visitor on to the login page. If you later add a
+       real "is the user already logged in?" check, do it here. -->
+  <meta http-equiv="refresh" content="0; url=login.html" />
+</head>
+<body>
+  <div class="splash-screen">
+    <div class="brand-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+    <div class="spinner"></div>
+    <p>Loading DineMapAI...</p>
+  </div>
+
+  <script>
+    // Backup redirect for browsers that ignore the meta refresh tag above
+    window.location.href = "login.html";
+  </script>
+</body>
+</html>
