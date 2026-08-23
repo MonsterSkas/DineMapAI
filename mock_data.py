@@ -25,7 +25,7 @@ import os
 # CONFIGURATION
 # =========================================================
 
-JSON_FILE = r"D:/PROJECT/DineMapAi/New folder/backend/results.json"
+JSON_FILE = r"backend2/results.json"
 
 
 # =========================================================
