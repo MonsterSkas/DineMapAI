@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-08-23T00:22:49.299456",
+  "location": "Birati, Kolkata",
+  "latitude": 22.6632119,
+  "longitude": 88.4271269,
+  "target_audience": "families",
+  "time_of_day": "evening",
+  "data": {
+    "colleges": 0,
+    "universities": 0,
+    "offices": 1,
+    "malls": 0,
+    "restaurants": 14,
+    "cafes": 0,
+    "metro_distance": 2.0539221576038473,
+    "bus_distance": 999,
+    "train_distance": 0.12888001021230766
+  },
+  "scores": {
+    "demand": 0.2,
+    "competition": 95.8,
+    "accessibility": 37.0,
+    "audience_fit": 50,
+    "time_score": 85,
+    "weather": 80,
+    "final_score": 46.62
+  }
+}
