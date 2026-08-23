@@ -16,7 +16,7 @@
 // CONFIGURATION — change these two lines to connect a real backend
 // ---------------------------------------------------------
 const API_BASE_URL = "http://127.0.0.1:5000"; // <-- your Flask server address
-const USE_MOCK_DATA = true; // <-- set to false once your backend is running
+const USE_MOCK_DATA = false; // <-- set to false once your backend is running
 
 // ---------------------------------------------------------
 // GENERIC REQUEST HELPERS
@@ -107,8 +107,8 @@ async function getDashboardData() {
     await mockDelay();
     return getMockDashboardData();
   }
-
-  return await fetchData("/dashboard-data");
+   
+  return await  fetchData("/dashboard-data");
 }
 
 /**
@@ -116,12 +116,14 @@ async function getDashboardData() {
  * Talks to POST /analyze-location on the Flask backend.
  */
 async function analyzeLocation(formData) {
+  //const load=window.open("D:/PROJECT/DineMapAI-main/project/loading formation.html","_blank"); 
   if (USE_MOCK_DATA) {
     await mockDelay();
     return { success: true, message: "Analysis started (mock data)." };
   }
 
   return await postData("/analyze-location", formData);
+  
 }
 
 // ---------------------------------------------------------

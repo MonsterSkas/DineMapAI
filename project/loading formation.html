@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DineMapAI — Opportunity Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<style>
+  /* ===== Same design tokens as the DineMapAI dashboard ===== */
+  :root {
+    --bg-app: #090b13;
+    --bg-card-solid: #131726;
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --text-primary: #eef0f8;
+    --text-secondary: #9298b2;
+    --text-muted: #5c6280;
+    --accent-purple: #7c5cfc;
+    --accent-purple-light: #9c85ff;
+    --accent-green: #22c55e;
+    --accent-orange: #f5a524;
+    --accent-red: #ef4444;
+    --accent-blue: #3b82f6;
+    --gradient-brand: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --font-main: "Inter", -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--bg-app);
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    overflow: hidden;
+  }
+
+  .stage {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    background:
+      radial-gradient(circle at 50% 35%, rgba(124, 92, 252, 0.14) 0%, transparent 55%),
+      var(--bg-app);
+    position: relative;
+  }
+
+  /* ---------- Header ---------- */
+  .stage-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 3;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--gradient-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    animation: iconPulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes iconPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(124, 92, 252, 0.4); }
+    50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(124, 92, 252, 0); }
+  }
+
+  .stage-header h1 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .stage-header h1 span { color: var(--accent-purple-light); }
+
+  .status-line {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 18px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    animation: dotBlink 1.4s ease-in-out infinite;
+  }
+
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  .status-text {
+    animation: statusFade 8s steps(1, end) infinite;
+  }
+
+  /* Cycle through 4 status strings using content swap via CSS counter trick */
+  .status-text::before {
+    content: "Scanning Kolkata for high-opportunity zones...";
+    animation: cycleText 8s steps(1, end) infinite;
+  }
+
+  @keyframes cycleText {
+    0%   { content: "Scanning Kolkata for high-opportunity zones..."; }
+    25%  { content: "Cross-referencing college density..."; }
+    50%  { content: "Weighing footfall against competition..."; }
+    75%  { content: "Ranking top recommended locations..."; }
+    100% { content: "Scanning Kolkata for high-opportunity zones..."; }
+  }
+
+  /* ---------- Radar ---------- */
+  .radar-wrap {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    max-width: 86vw;
+    max-height: 86vw;
+  }
+
+  .radar-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .radar-ring.r2 { inset: 15%; }
+  .radar-ring.r3 { inset: 30%; }
+  .radar-ring.r4 { inset: 45%; }
+
+  .radar-crosshair {
+    position: absolute;
+    background: var(--border-subtle);
+  }
+
+  .radar-crosshair.h { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%); }
+  .radar-crosshair.v { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); }
+
+  .radar-sweep {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(124, 92, 252, 0.55) 0deg,
+      rgba(124, 92, 252, 0.18) 28deg,
+      transparent 70deg,
+      transparent 360deg
+    );
+    animation: sweepRotate 4s linear infinite;
+    mix-blend-mode: screen;
+  }
+
+  @keyframes sweepRotate {
+    to { transform: rotate(360deg); }
+  }
+
+  .radar-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent-purple-light);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 24px 6px rgba(156, 133, 255, 0.6);
+  }
+
+  /* Blips: opportunity points that ping into existence, staggered,
+     each on its own loop so the radar always feels alive */
+  .blip {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: blipAppear 4s ease-in-out infinite;
+  }
+
+  .blip .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .blip .dot::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    opacity: 0;
+    animation: blipRipple 4s ease-out infinite;
+  }
+
+  .blip .score {
+    font-size: 10.5px;
+    font-weight: 700;
+    background: rgba(9, 11, 19, 0.85);
+    padding: 1px 7px;
+    border-radius: 999px;
+    border: 1px solid var(--border-subtle);
+    white-space: nowrap;
+  }
+
+  @keyframes blipAppear {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+    12%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    70%  { opacity: 1; }
+    88%  { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+    100% { opacity: 0; }
+  }
+
+  @keyframes blipRipple {
+    0%   { opacity: 0.8; transform: scale(0.4); }
+    70%  { opacity: 0; transform: scale(2.2); }
+    100% { opacity: 0; transform: scale(2.2); }
+  }
+
+  /* Orbiting category icons (colleges, metro, existing spots) */
+  .orbit {
+    position: absolute;
+    inset: 6%;
+    border-radius: 50%;
+    animation: orbitSpin 22s linear infinite;
+  }
+
+  .orbit.reverse {
+    animation-direction: reverse;
+    animation-duration: 30s;
+    inset: 16%;
+  }
+
+  @keyframes orbitSpin {
+    to { transform: rotate(360deg); }
+  }
+
+  .orbit-icon {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--bg-card-solid);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12.5px;
+    transform: translateX(-50%);
+    animation: counterSpin 22s linear infinite;
+  }
+
+  .orbit.reverse .orbit-icon {
+    animation-duration: 30s;
+    animation-direction: reverse;
+  }
+
+  @keyframes counterSpin {
+    to { transform: translateX(-50%) rotate(-360deg); }
+  }
+
+  /* ---------- Bottom score readout ---------- */
+  .readout {
+    display: flex;
+    gap: 14px;
+    z-index: 3;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .readout-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-card-solid);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 8px 14px 8px 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    opacity: 0;
+    animation: chipRise 0.6s ease forwards;
+  }
+
+  .readout-chip:nth-child(1) { animation-delay: 0.2s; }
+  .readout-chip:nth-child(2) { animation-delay: 0.4s; }
+  .readout-chip:nth-child(3) { animation-delay: 0.6s; }
+  .readout-chip:nth-child(4) { animation-delay: 0.8s; }
+
+  @keyframes chipRise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .readout-chip .chip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .readout-chip strong {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .radar-sweep, .orbit, .orbit-icon, .brand-icon, .status-dot, .blip { animation: none !important; opacity: 1 !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+
+    <div class="stage-header">
+      <div class="brand-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+      <h1>Dine<span>Map</span>AI</h1>
+    </div>
+
+    <div class="status-line">
+      <span class="status-dot"></span>
+      <span class="status-text"></span>
+    </div>
+
+    <div class="radar-wrap">
+      <div class="radar-ring"></div>
+      <div class="radar-ring r2"></div>
+      <div class="radar-ring r3"></div>
+      <div class="radar-ring r4"></div>
+      <div class="radar-crosshair h"></div>
+      <div class="radar-crosshair v"></div>
+
+      <div class="radar-sweep"></div>
+
+      <!-- Orbiting category icons -->
+      <div class="orbit">
+        <div class="orbit-icon" style="color:#9c85ff;"><i class="fa-solid fa-graduation-cap"></i></div>
+      </div>
+      <div class="orbit reverse">
+        <div class="orbit-icon" style="color:#60a5fa;"><i class="fa-solid fa-train-subway"></i></div>
+      </div>
+
+      <!-- Opportunity blips scattered around the radar, each looping -->
+      <div class="blip" style="top:30%; left:42%; animation-delay:0s; color:#22c55e;">
+        <span class="dot" style="background:#22c55e;"></span>
+        <span class="score">91</span>
+      </div>
+      <div class="blip" style="top:55%; left:65%; animation-delay:0.7s; color:#f5a524;">
+        <span class="dot" style="background:#f5a524;"></span>
+        <span class="score">78</span>
+      </div>
+      <div class="blip" style="top:68%; left:35%; animation-delay:1.4s; color:#22c55e;">
+        <span class="dot" style="background:#22c55e;"></span>
+        <span class="score">87</span>
+      </div>
+      <div class="blip" style="top:40%; left:70%; animation-delay:2.1s; color:#ef4444;">
+        <span class="dot" style="background:#ef4444;"></span>
+        <span class="score">42</span>
+      </div>
+      <div class="blip" style="top:22%; left:60%; animation-delay:2.8s; color:#f5a524;">
+        <span class="dot" style="background:#f5a524;"></span>
+        <span class="score">74</span>
+      </div>
+      <div class="blip" style="top:60%; left:50%; animation-delay:3.4s; color:#22c55e;">
+        <span class="dot" style="background:#22c55e;"></span>
+        <span class="score">82</span>
+      </div>
+
+      <div class="radar-core"></div>
+    </div>
+
+    <div class="readout">
+      <div class="readout-chip"><span class="chip-dot" style="background:#22c55e;"></span> High opportunity: <strong>12 zones</strong></div>
+      <div class="readout-chip"><span class="chip-dot" style="background:#f5a524;"></span> Medium: <strong>8 zones</strong></div>
+      <div class="readout-chip"><span class="chip-dot" style="background:#ef4444;"></span> Low: <strong>5 zones</strong></div>
+      <div class="readout-chip"><span class="chip-dot" style="background:#9c85ff;"></span> Best match: <strong>Lake Gardens (91)</strong></div>
+    </div>
+  </div>
+</body>
+</html>

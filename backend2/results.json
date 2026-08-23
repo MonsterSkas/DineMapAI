@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-08-09T19:02:17.678660",
+  "location": "Newtown, Kolkata",
+  "latitude": 22.6236298,
+  "longitude": 88.45048,
+  "target_audience": "student",
+  "time_of_day": "evening",
+  "data": {
+    "colleges": 0,
+    "universities": 0,
+    "offices": 0,
+    "malls": 0,
+    "restaurants": 33,
+    "cafes": 0,
+    "metro_distance": 999,
+    "bus_distance": 999,
+    "train_distance": 999
+  },
+  "scores": {
+    "demand": 0.0,
+    "competition": 90.1,
+    "accessibility": 10.0,
+    "audience_fit": 0.0,
+    "time_score": 90,
+    "weather": 80,
+    "final_score": 33.02
+  }
+}
