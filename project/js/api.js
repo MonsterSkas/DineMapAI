@@ -15,7 +15,7 @@
 // ---------------------------------------------------------
 // CONFIGURATION — change these two lines to connect a real backend
 // ---------------------------------------------------------
-const API_BASE_URL = "https://dinemapai-production.up.railway.app"; // <-- your Flask server address
+const API_BASE_URL = "shell.cloud.google.com/devshell/proxy?authuser=0&port=5000&environment_id=default"; // <-- your Flask server address
 const USE_MOCK_DATA = false; // <-- set to false once your backend is running
 
 // ---------------------------------------------------------
