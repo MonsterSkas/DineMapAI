@@ -15,7 +15,10 @@
 // ---------------------------------------------------------
 // CONFIGURATION — change these two lines to connect a real backend
 // ---------------------------------------------------------
-const API_BASE_URL = "https://five-places-sink.loca.lt"; // <-- your Flask server address.
+//const API_BASE_URL = "https://causing-tameness-pamphlet.ngrok-free.dev"; // <-- your Flask server address
+//const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE_URL = "https://five-places-sink.loca.lt";
+
 const USE_MOCK_DATA = false; // <-- set to false once your backend is running
 
 // ---------------------------------------------------------
