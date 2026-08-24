@@ -15,7 +15,7 @@
 // ---------------------------------------------------------
 // CONFIGURATION — change these two lines to connect a real backend
 // ---------------------------------------------------------
-const API_BASE_URL = "https://5000-cs-6fd0a7f2-eb26-444d-833d-9bed00084a46.cs-asia-southeast1-palm.cloudshell.dev/?authuser=0"; // <-- your Flask server address
+const API_BASE_URL = "https://causing-tameness-pamphlet.ngrok-free.dev/"; // <-- your Flask server address
 const USE_MOCK_DATA = false; // <-- set to false once your backend is running
 
 // ---------------------------------------------------------
