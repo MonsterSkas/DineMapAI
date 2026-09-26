@@ -8,6 +8,254 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- ============ Analyze loading overlay (neon) styles ============
+       Scoped under .loading-* classes so it can't clash with the rest
+       of the app's CSS. Shown/hidden by js/analyze.js while the
+       "Analyze Location" request is in flight. -->
+  <style>
+    :root {
+      --neon-cyan: #23f4ff;
+      --neon-pink: #ff2ec4;
+      --neon-purple: #9c5cff;
+      --neon-green: #2bffb0;
+    }
+
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 40%, rgba(124, 92, 252, 0.18) 0%, rgba(5, 6, 13, 0.94) 62%), rgba(5, 6, 13, 0.92);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+
+    .loading-overlay.show {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    .loading-panel {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      width: 100%;
+      max-width: 440px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .loading-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .loading-brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      color: #eef0f8;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+      box-shadow: 0 0 18px 2px rgba(35, 244, 255, 0.45), 0 0 30px 6px rgba(156, 92, 255, 0.3);
+      animation: loadingIconPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes loadingIconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .loading-brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #eef0f8;
+      letter-spacing: 0.2px;
+    }
+
+    .loading-brand-name span {
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ---------- Scanner / radar ---------- */
+    .loading-orbit {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      max-width: 70vw;
+      max-height: 70vw;
+    }
+
+    .loading-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(35, 244, 255, 0.22);
+    }
+
+    .loading-ring.r2 { inset: 16%; border-color: rgba(255, 46, 196, 0.2); }
+    .loading-ring.r3 { inset: 32%; border-color: rgba(156, 92, 255, 0.24); }
+
+    .loading-sweep {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        rgba(35, 244, 255, 0.65) 0deg,
+        rgba(255, 46, 196, 0.35) 30deg,
+        transparent 75deg,
+        transparent 360deg
+      );
+      animation: loadingSweepRotate 3.2s linear infinite;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes loadingSweepRotate {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-core {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 56px;
+      height: 56px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      color: #0b0d17;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+      box-shadow: 0 0 26px 6px rgba(35, 244, 255, 0.55), 0 0 46px 14px rgba(156, 92, 255, 0.35);
+      animation: loadingCorePulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes loadingCorePulse {
+      0%, 100% { box-shadow: 0 0 26px 6px rgba(35, 244, 255, 0.55), 0 0 46px 14px rgba(156, 92, 255, 0.35); }
+      50% { box-shadow: 0 0 34px 10px rgba(35, 244, 255, 0.75), 0 0 58px 18px rgba(255, 46, 196, 0.4); }
+    }
+
+    .loading-blip {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      animation: loadingBlipAppear 3.6s ease-in-out infinite;
+    }
+
+    @keyframes loadingBlipAppear {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+      15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      70% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+    }
+
+    /* ---------- Status text + progress ---------- */
+    .loading-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 20px;
+      font-size: 13.5px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 12px rgba(35, 244, 255, 0.5);
+    }
+
+    .loading-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--neon-green);
+      box-shadow: 0 0 8px 2px rgba(43, 255, 176, 0.7);
+      animation: loadingDotBlink 1.3s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes loadingDotBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.25; }
+    }
+
+    .loading-status-text {
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .loading-status-text.fade {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+
+    .loading-progress-track {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      overflow: hidden;
+    }
+
+    .loading-progress-bar {
+      height: 100%;
+      width: 6%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink));
+      background-size: 200% 100%;
+      box-shadow: 0 0 14px 1px rgba(35, 244, 255, 0.55);
+      transition: width 0.5s ease;
+      animation: loadingBarFlow 2.4s linear infinite;
+    }
+
+    @keyframes loadingBarFlow {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    .loading-hint {
+      font-size: 11.5px;
+      color: #7f86a3;
+    }
+
+    /* Success state: swap the accent to neon green as we hand off to the dashboard */
+    .loading-overlay.loading-complete .loading-core {
+      background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
+    }
+
+    .loading-overlay.loading-complete .loading-status {
+      color: var(--neon-green);
+      text-shadow: 0 0 12px rgba(43, 255, 176, 0.55);
+    }
+
+    .loading-overlay.loading-complete .loading-progress-bar {
+      background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .loading-brand-icon, .loading-sweep, .loading-core, .loading-dot, .loading-blip, .loading-progress-bar {
+        animation: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="app-shell">
@@ -221,6 +469,45 @@
           </div>
         </section>
       </main>
+    </div>
+  </div>
+
+  <!-- ============ Analyze loading overlay ============
+       Hidden by default (no "show" class). js/analyze.js toggles this
+       on submit and swaps loadingStatusText while it waits for the
+       backend's /analyze-location response, then redirects to the
+       dashboard once the data comes back. -->
+  <div id="analyzeLoadingOverlay" class="loading-overlay" role="status" aria-live="polite" aria-hidden="true">
+    <div class="loading-panel">
+      <div class="loading-brand">
+        <div class="loading-brand-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+        <div class="loading-brand-name">Dine<span>Map</span>AI</div>
+      </div>
+
+      <div class="loading-orbit">
+        <div class="loading-ring"></div>
+        <div class="loading-ring r2"></div>
+        <div class="loading-ring r3"></div>
+        <div class="loading-sweep"></div>
+
+        <div class="loading-blip" style="top:28%; left:64%; background:#23f4ff; box-shadow:0 0 8px 2px rgba(35,244,255,0.7); animation-delay:0s;"></div>
+        <div class="loading-blip" style="top:66%; left:30%; background:#ff2ec4; box-shadow:0 0 8px 2px rgba(255,46,196,0.7); animation-delay:0.9s;"></div>
+        <div class="loading-blip" style="top:70%; left:68%; background:#2bffb0; box-shadow:0 0 8px 2px rgba(43,255,176,0.7); animation-delay:1.8s;"></div>
+        <div class="loading-blip" style="top:24%; left:34%; background:#9c5cff; box-shadow:0 0 8px 2px rgba(156,92,255,0.7); animation-delay:2.6s;"></div>
+
+        <div class="loading-core"><i class="fa-solid fa-satellite-dish"></i></div>
+      </div>
+
+      <div class="loading-status">
+        <span class="loading-dot"></span>
+        <span id="loadingStatusText" class="loading-status-text">Initializing analysis...</span>
+      </div>
+
+      <div class="loading-progress-track">
+        <div id="loadingProgressBar" class="loading-progress-bar"></div>
+      </div>
+
+      <div class="loading-hint">This usually takes a few seconds — please don't close this tab.</div>
     </div>
   </div>
 
