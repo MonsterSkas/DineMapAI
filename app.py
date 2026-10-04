@@ -108,11 +108,11 @@ def login():
 # GET /dashboard-data
 # Returns everything the dashboard page needs to render.
 # ---------------------------------------------------------
-@app.route("/dashboard-data", methods=["GET"])
-def dashboard_data():
+@app.route("/dashboard-data/<user_id>", methods=["GET"])
+def dashboard_data(user_id):
 
     try:
-        data = get_dashboard_data()
+        data = get_dashboard_data(user_id)
         return jsonify(data)
 
     except Exception as e:
@@ -134,8 +134,8 @@ def dashboard_data():
 #   businessGoals, additionalPreferences, timingSlots (list)
 # Returns JSON: { "success": bool, "message": "..." }
 # ---------------------------------------------------------
-@app.route("/analyze-location", methods=["POST"])
-def analyze_location():
+@app.route("/analyze-location/<user_id>", methods=["POST"])
+def analyze_location(user_id):
     data = request.get_json(silent=True) or {}
 
     city_area = data.get("cityArea", "").strip()
@@ -153,7 +153,7 @@ def analyze_location():
     # to a database, etc. For now we just confirm receipt.
     # ---------------------------------------------------------
     print("Received analyze-location request:", data)  # helpful while developing
-    os.system(f"python D:/PROJECT/DineMapAi/Backend/backend2/main.py \"{data['cityArea']}\" \"{data['targetAudience']}\"")
+    os.system(f"python D:/PROJECT/DineMapAi/Backend/backend2/main.py \"{data['cityArea']}\" \"{data['targetAudience']}\" \"{user_id}\"")
     try:
         f=open("D:/PROJECT/DineMapAi/Backend/backend2/location.txt",'w')
         f.write(f"{data[city_area]}")

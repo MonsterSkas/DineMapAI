@@ -19,20 +19,20 @@ NO Flask restart is required.
 
 import json
 import os
+from pathlib import Path
 
 
 # =========================================================
 # CONFIGURATION
 # =========================================================
-
-JSON_FILE = r"backend2/results.json"
-
+RESULTS_DIR = Path(r'D:\PROJECT\DineMapAi\Backend\backend2')
+NUM_FILE = RESULTS_DIR / 'num.txt'
 
 # =========================================================
 # LOAD JSON
 # =========================================================
 
-def load_results():
+def load_results(user_id):
 
     """
     Read the latest results.json from disk.
@@ -41,18 +41,25 @@ def load_results():
     get_dashboard_data() runs.
     """
 
+    with open(NUM_FILE, 'r', encoding='utf-8') as f:
+        contents = f.read().strip()
+    if not contents:
+        raise ValueError('num.txt is empty; store an integer in it first')
+
+    json_file = RESULTS_DIR / f"results{user_id}.json"
+
     print("\n========================================")
-    print("Loading latest results.json...")
+    print("Loading latest results(c).json...")
     print("========================================")
 
-    if not os.path.exists(JSON_FILE):
+    if not json_file.exists():
 
         raise FileNotFoundError(
-            f"results.json not found:\n{JSON_FILE}"
+            f"results.json not found:\n{json_file}"
         )
 
     with open(
-        JSON_FILE,
+        json_file,
         "r",
         encoding="utf-8"
     ) as f:
@@ -70,7 +77,7 @@ def load_results():
 # DASHBOARD DATA
 # =========================================================
 
-def get_dashboard_data():
+def get_dashboard_data(user_id):
 
     """
     Returns everything the dashboard page needs to render.
@@ -86,7 +93,7 @@ def get_dashboard_data():
     # READ FRESH JSON
     # -----------------------------------------------------
 
-    data = load_results()
+    data = load_results(user_id)
 
 
     # =====================================================
