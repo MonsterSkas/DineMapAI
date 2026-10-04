@@ -17,7 +17,11 @@
 // ---------------------------------------------------------
 const API_BASE_URL = "http://127.0.0.1:5000"; // <-- your Flask server address
 const USE_MOCK_DATA = false; // <-- set to false once your backend is running
-
+let userid = session.Storage.getItem("userid");
+if(!userid){
+   userid=crypto.randomUUID();
+   session.Storage.setItem("userid",userid);
+}
 // ---------------------------------------------------------
 // GENERIC REQUEST HELPERS
 // Every POST and GET call in the app goes through these two
@@ -108,7 +112,7 @@ async function getDashboardData() {
     return getMockDashboardData();
   }
    
-  return await  fetchData("/dashboard-data");
+  return await  fetchData("/dashboard-data/${userid}");
 }
 
 /**
@@ -122,7 +126,7 @@ async function analyzeLocation(formData) {
     return { success: true, message: "Analysis started (mock data)." };
   }
 
-  return await postData("/analyze-location", formData);
+  return await postData("/analyze-location/${userid}", formData);
   
 }
 
