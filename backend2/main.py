@@ -1,5 +1,7 @@
 import json
+import re
 from datetime import datetime
+from pathlib import Path
 
 from math import radians, sin, cos, sqrt, atan2
 import sys
@@ -22,19 +24,16 @@ from calculation import (
 # ============================================================
 # SETTINGS
 # ============================================================
-argument1="None"
-if len(sys.argv) > 1:
-    argument1 = sys.argv[1]
-    argument2 = sys.argv[2]
-    print(f"Your Location is: {argument1}")
-    print(f"Your Target is: {argument2}")
-else:
-    print("No argument was provided!")
-#LOCATION = "newtown, Kolkata"
-LOCATION=argument1
+if len(sys.argv) != 4:
+    raise SystemExit("Usage: python main.py <location> <target_audience> <user_id>")
 
-TARGET_AUDIENCE = argument2
+LOCATION, TARGET_AUDIENCE, user_id = sys.argv[1:]
+if not re.fullmatch(r"[A-Za-z0-9_-]{1,128}", user_id):
+    raise SystemExit("Invalid session ID.")
 
+print(f"Your Location is: {LOCATION}")
+print(f"Your Target is: {TARGET_AUDIENCE}")
+print(f"Session ID: {user_id}")
 TIME_OF_DAY = "evening"
 
 # Temporary value until weather API is connected
@@ -212,7 +211,7 @@ print(
     len(transports)
 )
 
-for transport in transports[:5]:
+for transport in transports[:10]:
 
     print(transport)
 
@@ -607,8 +606,20 @@ print("==========================================")
 # ============================================================
 # SAVE RESULTS TO JSON (overwrites each run)
 # ============================================================
+c=0
+num_file = Path(__file__).with_name('num.txt')
+with open(num_file, 'r') as f:
+    contents = f.read().strip()
+with open(num_file, 'w') as f:
+    f.write(str(int(contents)+1))
+with open(num_file, 'r') as f:
+    contents = f.read().strip()
+if not contents:
+    raise ValueError('num.txt is empty; store an integer in it first')
 
-OUTPUT_FILE = "results.json"
+c = int(contents)
+
+OUTPUT_FILE = Path(__file__).with_name(f"results{user_id}.json")
 
 result_entry = {
     "timestamp": datetime.now().isoformat(),
@@ -631,7 +642,7 @@ result_entry = {
     }
 }
 
-with open(OUTPUT_FILE, "w") as f:
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(result_entry, f, indent=2)
 
 print(f"\nResults saved to {OUTPUT_FILE}")
