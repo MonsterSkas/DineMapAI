@@ -17,10 +17,10 @@
 // ---------------------------------------------------------
 const API_BASE_URL = "http://127.0.0.1:5000"; // <-- your Flask server address
 const USE_MOCK_DATA = false; // <-- set to false once your backend is running
-let userid = session.Storage.getItem("userid");
+let userid = sessionStorage.getItem("userid");
 if(!userid){
    userid=crypto.randomUUID();
-   session.Storage.setItem("userid",userid);
+   sessionStorage.setItem("userid",userid);
 }
 // ---------------------------------------------------------
 // GENERIC REQUEST HELPERS
