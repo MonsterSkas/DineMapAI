@@ -15,6 +15,13 @@
 // ---------------------------------------------------------
 // CONFIGURATION — change these two lines to connect a real backend
 // ---------------------------------------------------------
+const API_BASE_URL = "http://127.0.0.1:5000"; // <-- your Flask server address
+const USE_MOCK_DATA = false; // <-- set to false once your backend is running
+let userid = sessionStorage.getItem("userid");
+if(!userid){
+   userid=crypto.randomUUID();
+   sessionStorage.setItem("userid",userid);
+}
 //const API_BASE_URL = "https://causing-tameness-pamphlet.ngrok-free.dev"; // <-- your Flask server address
 //const API_BASE_URL = "http://127.0.0.1:5000";
 const API_BASE_URL = "https://five-places-sink.loca.lt";
@@ -111,7 +118,7 @@ async function getDashboardData() {
     return getMockDashboardData();
   }
    
-  return await  fetchData("/dashboard-data");
+  return await fetchData(`/dashboard-data/${userid}`);
 }
 
 /**
@@ -125,7 +132,8 @@ async function analyzeLocation(formData) {
     return { success: true, message: "Analysis started (mock data)." };
   }
 
-  return await postData("/analyze-location", formData);
+  
+   return await postData(`/analyze-location/${userid}`, formData);
   
 }
 
