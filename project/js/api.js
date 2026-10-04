@@ -17,12 +17,11 @@
 // ---------------------------------------------------------
 const API_BASE_URL = "http://127.0.0.1:5000"; // <-- your Flask server address
 const USE_MOCK_DATA = false; // <-- set to false once your backend is running
-let userid = sessionStorage.getItem("userid");
-if (!userid) {
-  userid = crypto.randomUUID();
-  sessionStorage.setItem("userid", userid);
+let userid = session.Storage.getItem("userid");
+if(!userid){
+   userid=crypto.randomUUID();
+   session.Storage.setItem("userid",userid);
 }
-
 // ---------------------------------------------------------
 // GENERIC REQUEST HELPERS
 // Every POST and GET call in the app goes through these two
@@ -112,8 +111,8 @@ async function getDashboardData() {
     await mockDelay();
     return getMockDashboardData();
   }
-
-  return await fetchData(`/dashboard-data/${encodeURIComponent(userid)}`);
+   
+  return await  fetchData("/dashboard-data/${userid}");
 }
 
 /**
@@ -121,12 +120,14 @@ async function getDashboardData() {
  * Talks to POST /analyze-location on the Flask backend.
  */
 async function analyzeLocation(formData) {
+  //const load=window.open("D:/PROJECT/DineMapAI-main/project/loading formation.html","_blank"); 
   if (USE_MOCK_DATA) {
     await mockDelay();
     return { success: true, message: "Analysis started (mock data)." };
   }
 
-  return await postData(`/analyze-location/${encodeURIComponent(userid)}`, formData);
+  return await postData("/analyze-location/${userid}", formData);
+  
 }
 
 // ---------------------------------------------------------
