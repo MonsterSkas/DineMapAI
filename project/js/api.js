@@ -126,7 +126,7 @@ async function analyzeLocation(formData) {
     return { success: true, message: "Analysis started (mock data)." };
   }
 
-  return await postData("/analyze-location/${userid}", formData);
+  return await postData(`/analyze-location/${userid}`, formData);
   
 }
 
