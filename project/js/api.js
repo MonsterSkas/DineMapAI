@@ -112,7 +112,7 @@ async function getDashboardData() {
     return getMockDashboardData();
   }
    
-  return await  fetchData("/dashboard-data/${userid}");
+  return await fetchData(`/dashboard-data/${userid}`);
 }
 
 /**
